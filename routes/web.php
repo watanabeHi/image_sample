@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Shop;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('test');
+});
+
+Route::post('/post', function (Request $request) {
+
+    $shop = new Shop();
+    // $shop->img_path = $request->file('image')->store('images');
+    $shop->img_path = $request->image->store('images');
+    $shop->save();
+
+    return redirect('/');
 });
