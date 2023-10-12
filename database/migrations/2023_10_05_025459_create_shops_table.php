@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->string('img_path');
+            $table->string('text');
+            $table->string('img_path1');
+            $table->string('img_path2');
+            $table->string('img_path3');
             $table->timestamps();
         });
     }
