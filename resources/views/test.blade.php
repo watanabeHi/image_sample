@@ -18,13 +18,9 @@
 
     @foreach (\App\Models\Shop::all() as $shop)
         {{ $shop->text }}
-        <img src="{{ asset('/storage/' . $shop->img_path1) }}" style="width: 100px">
-        @if ($shop->img_path2)
-            <img src="{{ asset('/storage/' . $shop->img_path2) }}" style="width: 100px">
-        @endif
-        @if ($shop->img_path3)
-            <img src="{{ asset('/storage/' . $shop->img_path3) }}" style="width: 100px">
-        @endif
+        @foreach ($shop->images as $image)
+            <img src="{{ asset('/storage/' . $image->img_path) }}" style="width: 100px">
+        @endforeach
         <br>
     @endforeach
 </body>
