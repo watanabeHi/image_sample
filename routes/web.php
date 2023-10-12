@@ -22,9 +22,14 @@ Route::get('/', function () {
 Route::post('/post', function (Request $request) {
 
     $shop = new Shop();
-    // $shop->img_path = $request->file('image')->store('images');
-    $shop->img_path = $request->image->store('images');
+    $shop->text = $request->text;
+    $shop->img_path1 = $request->images[0]->store('images');
+    if ($request->images[1] ?? false) {
+        $shop->img_path2 = $request->images[1]->store('images');
+    }
+    if ($request->images[2] ?? false) {
+        $shop->img_path3 = $request->images[2]->store('images');
+    }
     $shop->save();
-
     return redirect('/');
 });
